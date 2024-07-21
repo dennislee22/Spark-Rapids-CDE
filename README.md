@@ -93,7 +93,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 ![image](https://github.com/user-attachments/assets/d357b483-6285-4777-a714-900bd0591574)
 
-5. The job is completed.
+5. The Spark job has reached completion.
 
 <img width="695" alt="image" src="https://github.com/user-attachments/assets/3f30ec3d-bcff-4e16-a198-d4d85cad9b32">
 
