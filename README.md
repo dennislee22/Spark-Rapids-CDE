@@ -8,35 +8,35 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 1. Capture/Generate the raw data and store it in the HDFS cluster. In this example, I create data using `nds_gen_data.py` script adapted from [Nvidia-Spark github](https://github.com/NVIDIA/spark-rapids-benchmarks/tree/dev/nds). The sample outcome is as follows.
 
-```
-$ hdfs dfs -ls /user/dennislee/tpcds/raw_sf100
-Found 25 items
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:06 /user/dennislee/tpcds/raw_sf100/call_center
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:06 /user/dennislee/tpcds/raw_sf100/catalog_page
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:07 /user/dennislee/tpcds/raw_sf100/catalog_returns
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:09 /user/dennislee/tpcds/raw_sf100/catalog_sales
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer_address
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer_demographics
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/date_dim
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/dbgen_version
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/household_demographics
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/income_band
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/inventory
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/item
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/promotion
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/reason
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/ship_mode
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/store
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:11 /user/dennislee/tpcds/raw_sf100/store_returns
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/store_sales
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/time_dim
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/warehouse
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/web_page
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:25 /user/dennislee/tpcds/raw_sf100/web_returns
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:30 /user/dennislee/tpcds/raw_sf100/web_sales
-drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:30 /user/dennislee/tpcds/raw_sf100/web_site
-```
+   ```
+   $ hdfs dfs -ls /user/dennislee/tpcds/raw_sf100
+   Found 25 items
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:06 /user/dennislee/tpcds/raw_sf100/call_center
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:06 /user/dennislee/tpcds/raw_sf100/catalog_page
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:07 /user/dennislee/tpcds/raw_sf100/catalog_returns
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:09 /user/dennislee/tpcds/raw_sf100/catalog_sales
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer_address
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/customer_demographics
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/date_dim
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/dbgen_version
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/household_demographics
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/income_band
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/inventory
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/item
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/promotion
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/reason
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/ship_mode
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:10 /user/dennislee/tpcds/raw_sf100/store
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:11 /user/dennislee/tpcds/raw_sf100/store_returns
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/store_sales
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/time_dim
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/warehouse
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:24 /user/dennislee/tpcds/raw_sf100/web_page
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:25 /user/dennislee/tpcds/raw_sf100/web_returns
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:30 /user/dennislee/tpcds/raw_sf100/web_sales
+   drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:30 /user/dennislee/tpcds/raw_sf100/web_site
+   ```
 
 2. You may taint the node(s) with GPU and tag the CDE job with the associated toleration label.
    ```
