@@ -8,7 +8,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 ## Prerequisites
 
-1. Capture/Generate the raw data and store it in the HDFS cluster. In this example, I create data using `nds_gen_data.py` script adapted from [Nvidia-Spark github](https://github.com/NVIDIA/spark-rapids-benchmarks/tree/dev/nds). The sample outcome is as follows.
+1. Capture/Generate the raw data and store it in the HDFS cluster. In this example, I generate the raw data using `nds_gen_data.py` script adapted from [Nvidia-Spark github](https://github.com/NVIDIA/spark-rapids-benchmarks/tree/dev/nds). The sample outcome is as follows.
 
    ```
    $ hdfs dfs -ls /user/dennislee/tpcds/raw_sf100
