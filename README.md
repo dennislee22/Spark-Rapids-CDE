@@ -84,7 +84,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
    $ kubectl -n dex-app-t2hxcx7h get pods -o wide
    NAME                                                  READY   STATUS    RESTARTS      AGE   IP              NODE        NOMINATED NODE   READINESS GATES
    nds-transcode-parquet-cd0c8890d4ab5cc1-exec-1         2/2     Running   0             14s   10.254.12.89    worker-21   <none>           <none>
-   tpcds-nvitop-GPU-120-7e5de490d4ab08cf-driver                4/4     Running   0             37s   10.254.17.26    worker-17   <none>           <none>
+   tpcds-nvitop-GPU-120-7e5de490d4ab08cf-driver          4/4     Running   0             37s   10.254.17.26    worker-17   <none>           <none>
    ```
 
 4. Verify that the tasks are making use of GPU in the embedded Spark UI interface.
