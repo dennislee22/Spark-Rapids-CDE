@@ -66,7 +66,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 <img width="1401" alt="image" src="https://github.com/user-attachments/assets/20d76008-85ca-41fe-bb7b-066ca0099894">
 
-2. Create a job with the necessary arguments and parameters. You may also fine-tune the Spark job’s configuration settings for improved performancethe based on the published [guide](https://docs.nvidia.com/spark-rapids/user-guide/23.10/tuning-guide.html).
+2. Create a job with the necessary arguments and parameters. You may also fine-tune the Spark job’s configuration settings for improved performance based on the published [guide](https://docs.nvidia.com/spark-rapids/user-guide/23.10/tuning-guide.html).
 
 <img width="518" alt="image" src="https://github.com/user-attachments/assets/66399b36-7ad6-44dd-8469-5df054d0ea31">
 
