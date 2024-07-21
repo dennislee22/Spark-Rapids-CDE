@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/bc177adb-17ef-40a7-ae6b-15782f7e0210)# Expediting Spark job with GPU in CDE
+# Expediting Spark job with GPU in CDE
 
 The integration of GPUs into Spark environments, facilitated by frameworks like NVIDIA's RAPIDS, aims to offload compute-intensive ETL tasks such as data processing, filtering, aggregation from CPUs to GPUs. Tasks that typically require extensive computational resources can be completed significantly faster with GPU acceleration, leading to more responsive data pipelines and enhanced real-time analytics capabilities.
 
