@@ -136,3 +136,4 @@ For instance, the above Spark job was configured with `spark.rapids.sql.explain=
       @Expression <AttributeReference> cr_returned_date_sk#1132 could run on GPU
     !Exec <FileSourceScanExec> cannot run on GPU because unsupported data types DecimalType(7,2) [cr_return_amount, cr_net_loss, cr_return_amt_inc_tax, cr_store_credit, cr_fee, cr_refunded_cash, cr_return_ship_cost, cr_return_tax, cr_reversed_charge] in read for CSV; GpuCSVScan only supports UTF8 encoded data
 ```
+In summary, there are compatibility checks when comes to running RAPIDS in Spark as detailed [here](https://nvidia.github.io/spark-rapids/docs/compatibility.html).
