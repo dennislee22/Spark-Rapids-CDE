@@ -1,6 +1,6 @@
 # Expediting Spark job with GPU in CDE
 
-The integration of GPUs into Spark environments, facilitated by frameworks like NVIDIA's RAPIDS, aims to offload compute-intensive ETL tasks such as data processing, filtering, aggregation from CPU to GPU. Tasks that typically require extensive computational resources can be completed significantly faster with GPU acceleration, leading to more responsive data pipelines and enhanced real-time analytics capabilities.
+The integration of GPU into Spark environments, facilitated by frameworks like NVIDIA's RAPIDS, aims to offload compute-intensive ETL tasks such as data processing, filtering, aggregation from CPU to GPU. Tasks that typically require extensive computational resources can be completed significantly faster with GPU acceleration, leading to more responsive data pipelines and enhanced real-time analytics capabilities.
 
 Since CDE is seamlessly integrated with an HDFS cluster by default, users have the flexibility to utilize the CDE UI, API, or CLI for executing Spark jobs on a compute platform, powered by Kubernetes. This allows them to access data sources from the HDFS cluster and then store the resulting outputs back into the HDFS cluster, for subsequent consumption.
 
