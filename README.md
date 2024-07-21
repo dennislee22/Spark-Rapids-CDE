@@ -89,7 +89,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 <img width="695" alt="image" src="https://github.com/user-attachments/assets/3f30ec3d-bcff-4e16-a198-d4d85cad9b32">
 
 
-## Bonus Track #1: Realtime GPU monitoring
+## Bonus Track #1: Real-Time GPU Monitoring
 
 **Keep the GPU busy! Accelerate Spark!**
 So, how can we know whether the running job is actively using the GPU or falling back to the CPU at any given time? In this example, I create a Python environment with `nvitop` module to monitor the realtime GPU utilization inside the Spark executor. 
