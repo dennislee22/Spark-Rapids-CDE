@@ -68,7 +68,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 2. Create a job with the necessary arguments and parameters. You may also fine-tune the Spark job’s configuration settings for improved performance based on the published [guide](https://docs.nvidia.com/spark-rapids/user-guide/23.10/tuning-guide.html).
 
-<img width="518" alt="image" src="https://github.com/user-attachments/assets/66399b36-7ad6-44dd-8469-5df054d0ea31">
+<img width="540" alt="image" src="https://github.com/user-attachments/assets/1cd10889-4d11-4dcf-ae35-62bb73e03413">
 
    Note that the job is also configured with the defined GPU taint.
 
