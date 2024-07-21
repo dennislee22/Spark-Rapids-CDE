@@ -4,7 +4,7 @@ The integration of GPUs into Spark environments, facilitated by frameworks like 
 
 Since CDE is seamlessly integrated with an HDFS cluster by default, users have the flexibility to utilize the CDE UI, API, or CLI for executing Spark jobs on a compute platform, powered by Kubernetes. This allows them to access data sources from the HDFS cluster and then store the resulting outputs back into the HDFS cluster, for subsequent consumption.
 
-<img width="672" alt="image" src="https://github.com/user-attachments/assets/dcd00c25-1fc9-4f45-9bbc-0ac8389f1f11">
+<img width="672" alt="image" src="https://github.com/user-attachments/assets/1dd4321b-823f-4c72-b04b-ad9f6f37dfae">
 
 ## Prerequisites
 
