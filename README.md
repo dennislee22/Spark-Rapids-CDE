@@ -78,6 +78,15 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 <img width="743" alt="image" src="https://github.com/user-attachments/assets/a454b88e-73bb-4576-bc08-a2aef82e405f">
 
+   You can verify the running Spark driver and executor pods in the K8s cluster as follows.
+
+   ```
+   $ kubectl -n dex-app-t2hxcx7h get pods -o wide
+   NAME                                                  READY   STATUS    RESTARTS      AGE   IP              NODE        NOMINATED NODE   READINESS GATES
+   nds-transcode-parquet-cd0c8890d4ab5cc1-exec-1         2/2     Running   0             14s   10.254.12.89    worker-21   <none>           <none>
+   tpcds-nvitop-GPU-120-7e5de490d4ab08cf-driver                4/4     Running   0             37s   10.254.17.26    worker-17   <none>           <none>
+   ```
+
 4. Verify that the tasks are making use of GPU in the embedded Spark UI interface.
 
 ![image](https://github.com/user-attachments/assets/b46e7bfb-4d38-40c2-acaf-77ad485d8033)
