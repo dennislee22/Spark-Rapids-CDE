@@ -40,7 +40,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
    drwxr-xr-x   - dennislee dennislee          0 2024-07-17 08:30 /user/dennislee/tpcds/raw_sf100/web_site
    ```
 
-2. You may taint the node(s) with GPU and tag the CDE job with the associated toleration label.
+2. You may taint the node(s) with GPU and tag the CDE job with the associated toleration label later.
    ```
    $ kubectl taint nodes worker-18 nvidia.com/gpu=true:NoSchedule
    $ kubectl taint nodes worker-19 nvidia.com/gpu=true:NoSchedule
@@ -70,7 +70,7 @@ Since CDE is seamlessly integrated with an HDFS cluster by default, users have t
 
 <img width="540" alt="image" src="https://github.com/user-attachments/assets/1cd10889-4d11-4dcf-ae35-62bb73e03413">
 
-   Note that the job is also configured with the defined GPU taint.
+   Note that the job is also configured with the defined GPU node toleration.
 
 <img width="677" alt="image" src="https://github.com/user-attachments/assets/76fdf708-1f29-4033-a714-e6ffbe5c3421">
 
