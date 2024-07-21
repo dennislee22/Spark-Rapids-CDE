@@ -100,7 +100,7 @@ After that, add the built Python environment into the Spark job configuration as
 
 <img width="549" alt="image" src="https://github.com/user-attachments/assets/e8dbdce8-6b30-4a3c-8096-42898eebad01">
 
-In the K8s cluster, you may run nvitop inside the spark-container container of the Spark job executor pod. Example as follows:
+In the K8s cluster, you may run `nvitop` inside the `spark-container` container of the Spark job executor pod. Example as follows:
 
 ```
 $ kubectl -n dex-app-t2hxcx7h exec -ti nds-transcode-parquet-8b409b90d44ed4a7-exec-1  -c spark-container -- /bin/bash
