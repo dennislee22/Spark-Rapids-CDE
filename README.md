@@ -120,7 +120,7 @@ $ kubectl -n dex-app-t2hxcx7h exec -ti nds-transcode-parquet-8b409b90d44ed4a7-ex
 
 Openshift offers a variety of infrastructure metrics. For GPU monitoring over a substantial period of time, you can use the DCGM module as depicted below.
 
-![image](https://github.com/user-attachments/assets/937fd0fc-b5c1-4513-8004-812a7dbda9d0)
+<img width="1418" alt="image" src="https://github.com/user-attachments/assets/057c9173-1804-4a77-b3f4-46f7509f785a">
 
 
 ## Caveat
