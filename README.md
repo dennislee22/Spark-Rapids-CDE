@@ -137,3 +137,46 @@ For instance, the above Spark job was configured with `spark.rapids.sql.explain=
     !Exec <FileSourceScanExec> cannot run on GPU because unsupported data types DecimalType(7,2) [cr_return_amount, cr_net_loss, cr_return_amt_inc_tax, cr_store_credit, cr_fee, cr_refunded_cash, cr_return_ship_cost, cr_return_tax, cr_reversed_charge] in read for CSV; GpuCSVScan only supports UTF8 encoded data
 ```
 In summary, there are compatibility checks when comes to running RAPIDS in Spark as detailed [here](https://nvidia.github.io/spark-rapids/docs/compatibility.html).
+
+### Spark RAPIDS GPU Compatibility Reference
+
+| Operation / Category             | GPU Support     | Notes / Caveats |
+|---------------------------------|----------------|----------------|
+| **File Reads**                   |                |                |
+| Parquet / ORC                    | ✅ Full GPU     | Supports Decimal, Date, Timestamp, numeric types |
+| CSV (UTF8 only)                  | ✅ Partial GPU  | Decimal, Date, Timestamp not supported; falls back to CPU |
+| JSON / JDBC                      | ❌ Mostly CPU   | Complex types not supported; GPU scan limited |
+| **Basic DataFrame Ops**          |                |                |
+| `select`, `withColumn`           | ✅ GPU          | Column expressions must be GPU-compatible |
+| `filter`, `where`                | ✅ GPU          | Complex predicates or unsupported functions may fallback |
+| `drop`, `alias`                  | ✅ GPU          | Always GPU |
+| **Aggregations**                 |                |                |
+| `groupBy`, `agg`, `count`, `sum`, `avg` | ✅ GPU | Works if data type is supported |
+| `min`, `max`                     | ✅ GPU          | Works for numeric, string, date |
+| `collect_list`, `collect_set`    | ❌ CPU          | Not GPU accelerated |
+| **Joins**                        |                |                |
+| Inner / Left / Right / Full      | ✅ GPU          | Works for compatible data types and sizes |
+| Skewed joins                     | ❌ CPU fallback | May fallback for load balancing issues |
+| **Sorting / Ordering**            |                |                |
+| `orderBy`, `sort`                | ✅ GPU          | Works for numeric, string, timestamp |
+| Large shuffles                   | ⚠ GPU possible  | Only if input is GPU columnar; else CPU fallback |
+| **Window functions**             |                |                |
+| `row_number`, `rank`, `dense_rank` | ✅ GPU        | Input must be GPU columnar |
+| Lag / Lead                        | ✅ GPU          | Input must be GPU columnar |
+| Some complex window functions     | ❌ CPU fallback | e.g., UDF inside window |
+| **Functions**                     |                |                |
+| Built-in arithmetic (`+,-,*,/`)   | ✅ GPU          | Works on numeric types |
+| String functions (`concat`, `substring`) | ✅ GPU  | Regex and complex string ops may fallback |
+| Date/Time functions               | ✅ GPU          | Limited to supported types |
+| UDF (Python / Java)               | ❌ CPU          | GPU cannot execute arbitrary code |
+| **Type Casting**                  |                |                |
+| Numeric → Numeric                 | ✅ GPU          | Supported types |
+| String → Date / Timestamp         | ✅ GPU (Parquet)| CSV requires CPU parsing |
+| Decimal → Decimal                 | ✅ GPU (Parquet)| High precision (e.g., >38) may fallback |
+
+### Key Takeaways
+1. Parquet/ORC + GPU-compatible types → maximizes GPU usage.
+2. CSV/JSON → CPU fallback for decimals, dates, and timestamps.
+3. Shuffles and joins run on GPU only if the input is already GPU columnar.
+4. UDFs and complex expressions are CPU-only.
+5. Always check logs (spark.rapids.sql.explain=ALL) to see actual GPU usage.
