@@ -138,6 +138,13 @@ For instance, the above Spark job was configured with `spark.rapids.sql.explain=
 ```
 In summary, there are compatibility checks when comes to running RAPIDS in Spark as detailed [here](https://nvidia.github.io/spark-rapids/docs/compatibility.html).
 
+### Key Takeaways
+1. Parquet/ORC + GPU-compatible types → maximizes GPU usage.
+2. CSV/JSON → CPU fallback for decimals, dates, and timestamps.
+3. Shuffles and joins run on GPU only if the input is already GPU columnar.
+4. UDFs and complex expressions are CPU-only.
+5. Always check logs (spark.rapids.sql.explain=ALL) to see actual GPU usage.
+
 ### Spark RAPIDS GPU Compatibility Reference
 
 | Operation / Category             | GPU Support     | Notes / Caveats |
@@ -173,10 +180,3 @@ In summary, there are compatibility checks when comes to running RAPIDS in Spark
 | Numeric → Numeric                 | ✅ GPU          | Supported types |
 | String → Date / Timestamp         | ✅ GPU (Parquet)| CSV requires CPU parsing |
 | Decimal → Decimal                 | ✅ GPU (Parquet)| High precision (e.g., >38) may fallback |
-
-### Key Takeaways
-1. Parquet/ORC + GPU-compatible types → maximizes GPU usage.
-2. CSV/JSON → CPU fallback for decimals, dates, and timestamps.
-3. Shuffles and joins run on GPU only if the input is already GPU columnar.
-4. UDFs and complex expressions are CPU-only.
-5. Always check logs (spark.rapids.sql.explain=ALL) to see actual GPU usage.
